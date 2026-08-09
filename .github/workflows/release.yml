@@ -5,14 +5,16 @@ on:
 
 jobs:
   code:
-    uses: unional/.github/.github/workflows/pnpm-verify-linux.yml@main
+    uses: cyberuni/.github/.github/workflows/pnpm-verify.yml@main
+    with:
+      os: '["ubuntu-latest"]'
+      skip-playwright: true
+      skip-codecov: true
 
   # Secretless: GITHUB_TOKEN for the version PR, npm trusted publishing (OIDC) to
-  # publish. No CI_GITHUB_TOKEN or NPM_TOKEN, so nothing to rotate. `unional` is a
-  # personal namespace with no shared secret scope, which is what makes per-repo
-  # tokens painful enough to be worth avoiding.
+  # publish. No CI_GITHUB_TOKEN or NPM_TOKEN, so nothing to rotate or silently expire.
   release:
-    uses: unional/.github/.github/workflows/pnpm-release-changeset-oidc.yml@main
+    uses: cyberuni/.github/.github/workflows/pnpm-release-changeset-oidc.yml@main
     needs: code
     permissions:
       id-token: write
