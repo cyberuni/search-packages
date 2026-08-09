@@ -9,4 +9,24 @@ on:
 
 jobs:
   code:
-    uses: unional/.github/.github/workflows/pnpm-verify-linux.yml@main
+    uses: cyberuni/.github/.github/workflows/pnpm-verify.yml@main
+    with:
+      # cyberuni's verify defaults to 3 OS x 2 Node. This is a pure-TS library with no
+      # platform-specific behaviour, so ubuntu alone is the honest coverage — and it
+      # sidesteps that workflow's unconditional Xvfb step, which has no counterpart on
+      # the macOS and Windows runners.
+      os: '["ubuntu-latest"]'
+      # No browser tests.
+      skip-playwright: true
+      # Codecov is not wired up here; a stale codecov context would just block merges.
+      skip-codecov: true
+
+  # The release PR is the last point where the next publish is reviewable; after it
+  # merges, release.yml publishes unattended. Only runs there, so ordinary PRs are
+  # unaffected. Deliberately not a required check — it is skipped on every other PR,
+  # and a skipped check never satisfies a required context.
+  publish-gate:
+    if: startsWith(github.head_ref, 'changeset-release/')
+    uses: cyberuni/.github/.github/workflows/pnpm-publish-gate.yml@main
+    permissions:
+      contents: read
