@@ -3,7 +3,7 @@
 	"tasks": {
 		"build": {
 			"dependsOn": ["^build"],
-			"inputs": ["package.json", "tsconfig.*", "ts/**/*.tsx?"],
+			"inputs": ["package.json", "tsconfig.*", "tsdown.config.ts", "ts/**/*.tsx?"],
 			"outputs": ["cjs/**", "esm/**"]
 		},
 		"clean": {
@@ -11,7 +11,7 @@
 		},
 		"coverage": {
 			"dependsOn": ["build"],
-			"inputs": ["package.json", "tsconfig.*", "ts/**/*.tsx?"],
+			"inputs": ["package.json", "tsconfig.*", "vitest.config.ts", "ts/**/*.tsx?"],
 			"outputs": ["coverage/**"]
 		},
 		"depcheck": {
@@ -22,7 +22,10 @@
 		},
 		"test": {
 			"dependsOn": ["build"],
-			"inputs": ["package.json", "tsconfig.*", "ts/**/*.tsx?"]
+			"inputs": ["package.json", "tsconfig.*", "vitest.config.ts", "ts/**/*.tsx?"]
+		},
+		"typecheck": {
+			"inputs": ["package.json", "tsconfig.*", "tsdown.config.ts", "vitest.config.ts", "ts/**/*.tsx?"]
 		},
 		"verify": {
 			"dependsOn": ["build"],
@@ -30,7 +33,7 @@
 		},
 		"watch": {
 			"dependsOn": ["build"],
-			"inputs": ["package.json", "tsconfig.*", "ts/**/*.tsx?"]
+			"inputs": ["package.json", "tsconfig.*", "vitest.config.ts", "ts/**/*.tsx?"]
 		}
 	}
 }

@@ -40,34 +40,27 @@
 		"!**/*.{accept,integrate,spec,system,test,unit}.*"
 	],
 	"scripts": {
-		"build": "run-p build:cjs build:esm",
-		"build:cjs": "esbuild ts/index.ts --bundle --platform=node --outfile=cjs/index.js && ncp package.cjs.json cjs/package.json",
-		"build:esm": "tsc",
-		"build:watch": "tsc --watch",
-		"clean": "rimraf .nyc_output .ts coverage cjs esm lib libm",
-		"coverage": "cross-env NODE_OPTIONS=--experimental-vm-modules NODE_NO_WARNINGS=1 jest --coverage",
+		"build": "tsdown",
+		"build:watch": "tsdown --watch",
+		"clean": "rimraf coverage cjs esm *.tsbuildinfo",
+		"coverage": "vitest run --coverage",
 		"depcheck": "depcheck",
 		"nuke": "run-s clean && rimraf node_modules",
-		"test": "cross-env NODE_OPTIONS=--experimental-vm-modules NODE_NO_WARNINGS=1 jest",
-		"verify": "npm-run-all clean -p build coverage depcheck",
-		"watch": "cross-env NODE_OPTIONS=--experimental-vm-modules NODE_NO_WARNINGS=1 jest --watch",
+		"test": "vitest run",
+		"typecheck": "tsc",
+		"verify": "npm-run-all clean -p build typecheck coverage depcheck",
+		"watch": "vitest",
 		"w": "pnpm watch"
 	},
 	"devDependencies": {
-		"@repobuddy/jest": "^5.0.0",
-		"@types/jest": "^29.5.14",
-		"cross-env": "^7.0.3",
+		"@types/node": "^26.4.0",
+		"@vitest/coverage-v8": "^4.1.11",
 		"depcheck": "^1.4.7",
-		"esbuild": "^0.28.0",
-		"jest": "^29.7.0",
-		"jest-watch-suspend": "^1.1.2",
-		"jest-watch-toggle-config-2": "^2.1.0",
-		"jest-watch-typeahead": "^3.0.0",
-		"ncp": "^2.0.0",
 		"npm-run-all2": "^9.0.0",
 		"rimraf": "^6.0.1",
-		"ts-jest": "^29.4.11",
-		"typescript": "^5.9.3"
+		"tsdown": "^0.22.14",
+		"typescript": "^5.9.3",
+		"vitest": "^4.1.11"
 	},
 	"engines": {
 		"node": ">= 18"

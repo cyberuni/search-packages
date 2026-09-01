@@ -16,8 +16,9 @@
 		"release": "changeset publish",
 		"sp": "pnpm --filter search-packages",
 		"test": "turbo run test",
+		"typecheck": "turbo run typecheck",
 		"verify": "run-p lint verify:pkg",
-		"verify:pkg": "turbo run build coverage depcheck",
+		"verify:pkg": "turbo run build typecheck coverage depcheck",
 		"version": "changeset version"
 	},
 	"devDependencies": {
