@@ -1,2 +1,9 @@
 packages:
   - packages/*
+overrides:
+  # GHSA-2v37-7h3g-55p8 — nanoid < 3.3.18 loops indefinitely for a zero size.
+  # Reaches the tree only as depcheck -> @vue/compiler-sfc -> postcss -> nanoid,
+  # so it is build-time only and never ships to consumers. depcheck 1.4.7 is its
+  # own latest release, so there is no parent left to bump.
+  # Drop this once depcheck resolves a patched nanoid on its own.
+  nanoid: '^3.3.18'
