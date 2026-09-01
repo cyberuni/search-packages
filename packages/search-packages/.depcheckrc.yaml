@@ -1,6 +1,3 @@
 ignores:
-  - "@repobuddy/jest"
-  - "@types/jest"
-  - jest-*
+  # Used by `pnpm clean` / `pnpm nuke`, which depcheck does not read.
   - rimraf
-  - ts-jest

@@ -1,6 +1,5 @@
 {
 	"compilerOptions": {
-		"composite": true,
 		"declaration": true,
 		"declarationMap": true,
 		"esModuleInterop": true,
@@ -8,12 +7,13 @@
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
 		"newLine": "LF",
+		"noEmit": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"outDir": "esm",
-		"rootDir": "ts",
+		"skipLibCheck": true,
 		"strict": true,
-		"target": "ES2022"
+		"target": "ES2022",
+		"types": ["node", "vitest/globals"]
 	},
-	"include": ["ts"]
+	"include": ["ts", "tsdown.config.ts", "vitest.config.ts"]
 }
