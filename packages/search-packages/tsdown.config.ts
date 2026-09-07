@@ -11,7 +11,7 @@ import { defineConfig } from 'tsdown'
  */
 export default defineConfig([
 	{
-		entry: ['ts/index.ts'],
+		entry: ['src/index.ts'],
 		format: 'cjs',
 		outDir: 'cjs',
 		platform: 'node',
@@ -27,14 +27,14 @@ export default defineConfig([
 		}
 	},
 	{
-		entry: ['ts/**/*.ts', '!ts/**/*.spec.ts', '!ts/**/*.internal.ts'],
+		entry: ['src/**/*.ts', '!src/**/*.spec.ts', '!src/**/*.internal.ts'],
 		format: 'esm',
 		outDir: 'esm',
 		platform: 'node',
 		unbundle: true,
 		// `dts.sourcemap` governs both `.d.ts.map` and `.js.map`. `tsc` published the
 		// former, so it stays on; the `.js.map` files that come with it resolve against
-		// the `ts/` sources the package already ships.
+		// the `src/` sources the package already ships.
 		dts: { sourcemap: true },
 		outExtensions: () => ({ js: '.js', dts: '.d.ts' }),
 		clean: ['esm']

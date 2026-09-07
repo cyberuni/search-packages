@@ -35,7 +35,7 @@
 	"files": [
 		"cjs",
 		"esm",
-		"ts",
+		"src",
 		"!**/*.internal.*",
 		"!**/*.{accept,integrate,spec,system,test,unit}.*"
 	],
