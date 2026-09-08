@@ -8,6 +8,16 @@ overrides:
   # Drop this once depcheck resolves a patched nanoid on its own.
   nanoid: '^3.3.18'
 
+  # CVE-2026-75899 / CVE-2026-75931 / CVE-2026-75975 / CVE-2026-76172 — fast-uri
+  # < 3.1.6 mis-normalizes URIs (host confusion, SSRF via malformed IPv6 and
+  # repeated percent-decoding, skipped IDN canonicalization).
+  # Reaches the tree only as @commitlint/cli -> @commitlint/config-validator ->
+  # ajv -> fast-uri, so it is commit-lint-time only and never ships to consumers.
+  # ajv 8.20.0 is its own latest release and still asks for fast-uri ^3.0.1, so
+  # there is no parent left to bump.
+  # Drop this once ajv resolves a patched fast-uri on its own.
+  fast-uri: '^3.1.6'
+
 # Supply-chain soak: refuse packages published less than 24h ago, so a compromised
 # release has a window to be caught and unpublished before it reaches a build.
 #
