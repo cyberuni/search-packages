@@ -6,7 +6,7 @@ overrides:
   # so it is build-time only and never ships to consumers. depcheck 1.4.7 is its
   # own latest release, so there is no parent left to bump.
   # Drop this once depcheck resolves a patched nanoid on its own.
-  nanoid: '^3.3.18'
+  nanoid: '^6.0.0'
 
   # CVE-2026-75899 / CVE-2026-75931 / CVE-2026-75975 / CVE-2026-76172 — fast-uri
   # < 3.1.6 mis-normalizes URIs (host confusion, SSRF via malformed IPv6 and
