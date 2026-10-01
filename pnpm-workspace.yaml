@@ -16,7 +16,7 @@ overrides:
   # ajv 8.20.0 is its own latest release and still asks for fast-uri ^3.0.1, so
   # there is no parent left to bump.
   # Drop this once ajv resolves a patched fast-uri on its own.
-  fast-uri: '^3.1.6'
+  fast-uri: '^4.0.0'
 
 # Supply-chain soak: refuse packages published less than 24h ago, so a compromised
 # release has a window to be caught and unpublished before it reaches a build.
